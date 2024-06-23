@@ -57,19 +57,41 @@ namespace Calculator
             isFirstInput = true;
         }
 
+        //Кнопка стереть
         private void button5_Click(object sender, EventArgs e)
         {
+
             if (textBox1.Text.Length > 1)
                 textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
             else
+            {
                 button3.PerformClick();
-                
-            
+                isFirstInput=true;
+            }
+
+
         }
 
         private void Keybord_Input(object sender, KeyEventArgs e)
         {
-            
+            foreach (Button b in tableLayoutPanel1.Controls.OfType<Button>())
+            {
+                if (e.KeyCode.ToString() == b.Text)
+                {
+                    b.PerformClick();
+                    break;
+                }
+            }
+        }
+
+        //Кнопка запятой
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (!textBox1.Text.Contains(","))
+            {
+                textBox1.Text += ",";
+                isFirstInput = false;
+            }
         }
     }
 }

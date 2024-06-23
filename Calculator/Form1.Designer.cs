@@ -173,7 +173,6 @@
             this.button3.Text = "CE";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.ClearEntry);
-            this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button4
             // 
@@ -473,6 +472,7 @@
             this.button20.TabIndex = 18;
             this.button20.Text = ",";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             this.button20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button21
@@ -494,6 +494,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
@@ -510,6 +512,8 @@
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
