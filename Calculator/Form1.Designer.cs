@@ -95,7 +95,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "=";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -155,7 +155,6 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "%";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button3
             // 
@@ -190,7 +189,6 @@
             this.button4.Text = "C";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.ClearAll);
-            this.button4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button5
             // 
@@ -225,7 +223,6 @@
             this.button6.Text = "7";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.NumButtons);
-            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button7
             // 
@@ -243,7 +240,6 @@
             this.button7.Text = "8";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.NumButtons);
-            this.button7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button8
             // 
@@ -261,7 +257,6 @@
             this.button8.Text = "9";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.NumButtons);
-            this.button8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button9
             // 
@@ -278,7 +273,7 @@
             this.button9.TabIndex = 7;
             this.button9.Text = "/";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button9.Click += new System.EventHandler(this.Math_Operator);
             // 
             // button10
             // 
@@ -296,7 +291,6 @@
             this.button10.Text = "4";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.NumButtons);
-            this.button10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button11
             // 
@@ -314,7 +308,6 @@
             this.button11.Text = "5";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.NumButtons);
-            this.button11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button12
             // 
@@ -332,7 +325,6 @@
             this.button12.Text = "6";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.NumButtons);
-            this.button12.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button13
             // 
@@ -349,7 +341,7 @@
             this.button13.TabIndex = 11;
             this.button13.Text = "*";
             this.button13.UseVisualStyleBackColor = false;
-            this.button13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button13.Click += new System.EventHandler(this.Math_Operator);
             // 
             // button14
             // 
@@ -367,7 +359,6 @@
             this.button14.Text = "1";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.NumButtons);
-            this.button14.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button15
             // 
@@ -385,7 +376,6 @@
             this.button15.Text = "2";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.NumButtons);
-            this.button15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button16
             // 
@@ -403,7 +393,6 @@
             this.button16.Text = "3";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.NumButtons);
-            this.button16.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button17
             // 
@@ -420,7 +409,7 @@
             this.button17.TabIndex = 15;
             this.button17.Text = "-";
             this.button17.UseVisualStyleBackColor = false;
-            this.button17.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button17.Click += new System.EventHandler(this.Math_Operator);
             // 
             // button18
             // 
@@ -437,7 +426,7 @@
             this.button18.TabIndex = 16;
             this.button18.Text = "+/-";
             this.button18.UseVisualStyleBackColor = false;
-            this.button18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // button19
             // 
@@ -455,7 +444,6 @@
             this.button19.Text = "0";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.NumButtons);
-            this.button19.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button20
             // 
@@ -473,7 +461,6 @@
             this.button20.Text = ",";
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.button20_Click);
-            this.button20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
             // 
             // button21
             // 
@@ -490,7 +477,7 @@
             this.button21.TabIndex = 19;
             this.button21.Text = "+";
             this.button21.UseVisualStyleBackColor = false;
-            this.button21.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Keybord_Input);
+            this.button21.Click += new System.EventHandler(this.Math_Operator);
             // 
             // textBox1
             // 
@@ -526,7 +513,6 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(294, 21);
             this.textBox2.TabIndex = 21;
-            this.textBox2.Text = "123+";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // menuStrip1
@@ -612,12 +598,14 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(675, 640);
             this.MinimumSize = new System.Drawing.Size(310, 480);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Калькулятор";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
