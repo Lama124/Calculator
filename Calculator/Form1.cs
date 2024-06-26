@@ -13,6 +13,7 @@ namespace Calculator
     public partial class Form1 : Form
     {
         bool isFirstInput = true;
+        int commonFontSize = 34;
 
         public Form1()
         {
@@ -35,8 +36,6 @@ namespace Calculator
                 button9.PerformClick();
             if (e.KeyCode.Equals(Keys.Oemcomma) || e.KeyCode.Equals(Keys.Decimal))
                 button20.PerformClick();
-            //if (e.KeyCode.ToString() == "Return")
-            //    button1.PerformClick();
             if ((e.Shift && e.KeyCode.Equals(Keys.D8)) || e.KeyCode.Equals(Keys.Multiply))
             {
                 button13.PerformClick();
@@ -167,29 +166,70 @@ namespace Calculator
             if (!textBox2.Text.Contains("="))
             {
                 string result = FindResult();
-                textBox2.Text += textBox1.Text + "=";
-                textBox1.Text = result;
+                if (result != "Ошибка")
+                {
+                    textBox2.Text += textBox1.Text + "=";
+                    textBox1.Text = result;
+                }
             }
         }
 
         string FindResult()
         {
-            double firstNum = double.Parse(textBox2.Text.Remove(textBox2.Text.Length - 1));
-            double secondNum = double.Parse(textBox1.Text);
-            char mathOperator = textBox2.Text[textBox2.Text.Length - 1];
-            switch (mathOperator)
+            if (textBox2.Text.Length > 0)
             {
-                case '+': return Convert.ToString(firstNum + secondNum);
-                case '-': return Convert.ToString(firstNum - secondNum);
-                case '*': return Convert.ToString(firstNum * secondNum);
-                case '/':
-                    if (secondNum != 0)
-                        return Convert.ToString(firstNum / secondNum);
-                    else
-                    { isFirstInput = true; return "Деление на ноль невозможно";  }
+                double firstNum = double.Parse(textBox2.Text.Remove(textBox2.Text.Length - 1));
+                double secondNum = double.Parse(textBox1.Text);
+                char mathOperator = textBox2.Text[textBox2.Text.Length - 1];
+                switch (mathOperator)
+                {
+                    case '+': return Convert.ToString(firstNum + secondNum);
+                    case '-': return Convert.ToString(firstNum - secondNum);
+                    case '*': return Convert.ToString(firstNum * secondNum);
+                    case '/':
+                        if (secondNum != 0)
+                            return Convert.ToString(firstNum / secondNum);
+                        else
+                        { isFirstInput = true; return "Деление на ноль невозможно"; }
+
+                }
 
             }
-            return "";
+            return "Ошибка";
+
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int growFontSize = commonFontSize, reduceFontSize = commonFontSize;
+            if (textBox1.Text.Length > 10)
+            {
+                growFontSize -= 4;
+                textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+            }
+            else if (textBox1.Text.Length <= 10)
+            {
+                textBox1.Font = new Font("Consolas", reduceFontSize, FontStyle.Regular);
+            }
+            if (textBox1.Text.Length > 12)
+            {
+                growFontSize -= 4;
+                textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+            }
+            if(textBox1.Text.Length > 17)
+            {
+                growFontSize -= 4;
+                textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+
+            }
+        }
+
+        private void скоростьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }
