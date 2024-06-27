@@ -1,17 +1,16 @@
 ﻿namespace Calculator
 {
-    partial class Form2
+    partial class Form3
     {
-
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -29,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -49,13 +48,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.мамаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.длиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скоростьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.обычныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.углыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -356,7 +355,8 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.помощьToolStripMenuItem});
+            this.помощьToolStripMenuItem,
+            this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(339, 27);
@@ -367,7 +367,6 @@
             this.помощьToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.мамаToolStripMenuItem,
-            this.справкаToolStripMenuItem,
             this.выйтиToolStripMenuItem});
             this.помощьToolStripMenuItem.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
             this.помощьToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
@@ -379,24 +378,31 @@
             // 
             this.мамаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.обычныйToolStripMenuItem,
-            this.длиныToolStripMenuItem,
+            this.скоростьToolStripMenuItem,
             this.углыToolStripMenuItem});
             this.мамаToolStripMenuItem.Name = "мамаToolStripMenuItem";
             this.мамаToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.мамаToolStripMenuItem.Text = "Сменить Режим";
             // 
-            // длиныToolStripMenuItem
+            // скоростьToolStripMenuItem
             // 
-            this.длиныToolStripMenuItem.Name = "длиныToolStripMenuItem";
-            this.длиныToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.длиныToolStripMenuItem.Text = "Длины";
-            this.длиныToolStripMenuItem.Click += new System.EventHandler(this.длиныToolStripMenuItem_Click);
+            this.скоростьToolStripMenuItem.Name = "скоростьToolStripMenuItem";
+            this.скоростьToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.скоростьToolStripMenuItem.Text = "Скорость";
+            this.скоростьToolStripMenuItem.Click += new System.EventHandler(this.скоростьToolStripMenuItem_Click);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.выйтиToolStripMenuItem.Text = "Выйти";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(74, 23);
+            this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // textBox1
             // 
@@ -425,11 +431,11 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.comboBox1.Items.AddRange(new object[] {
-            "Километры в час",
-            "Метры в секунду",
-            "Футы в секунду",
-            "Мили в час",
-            "Узлов"});
+            "Сантиметры",
+            "Метры",
+            "Километры",
+            "Мили",
+            "Футы"});
             this.comboBox1.Location = new System.Drawing.Point(0, 102);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(186, 25);
@@ -442,12 +448,13 @@
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.comboBox2.Items.AddRange(new object[] {
-            "Километры в час",
-            "Метры в секунду",
-            "Футы в секунду",
-            "Мили в час",
-            "Узлов"});
+            "Сантиметры",
+            "Метры",
+            "Километры",
+            "Мили",
+            "Футы"});
             this.comboBox2.Location = new System.Drawing.Point(0, 190);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(186, 25);
@@ -460,12 +467,6 @@
             this.обычныйToolStripMenuItem.Text = "Обычный";
             this.обычныйToolStripMenuItem.Click += new System.EventHandler(this.обычныйToolStripMenuItem_Click);
             // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
             // углыToolStripMenuItem
             // 
             this.углыToolStripMenuItem.Name = "углыToolStripMenuItem";
@@ -473,7 +474,7 @@
             this.углыToolStripMenuItem.Text = "Углы";
             this.углыToolStripMenuItem.Click += new System.EventHandler(this.углыToolStripMenuItem_Click);
             // 
-            // Form2
+            // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -490,10 +491,10 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(675, 640);
             this.MinimumSize = new System.Drawing.Size(355, 480);
-            this.Name = "Form2";
+            this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Калькулятор";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -521,15 +522,15 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem мамаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem длиныToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem скоростьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ToolStripMenuItem обычныйToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem углыToolStripMenuItem;
     }
 }

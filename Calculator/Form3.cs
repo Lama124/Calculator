@@ -10,24 +10,21 @@ using System.Windows.Forms;
 
 namespace Calculator
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
-
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        public Form2()
-        {
-            InitializeComponent();
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 2;
-
-        }
-
         bool isFirstInput = true;
         int commonFontSize = 34;
+        public Form3()
+        {
+            InitializeComponent();
+            comboBox1.SelectedIndex = 1;
+            comboBox2.SelectedIndex = 2;
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
 
         //Ввод с клавиатуры
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -145,7 +142,6 @@ namespace Calculator
             {
                 growFontSize -= 4;
                 textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
-
             }
         }
 
@@ -160,15 +156,15 @@ namespace Calculator
                 switch (secondValue)
                 {
                     case 0:
-                        return Convert.ToString(firstNum);// км/ч
+                        return Convert.ToString(firstNum); //см
                     case 1:
-                        return Convert.ToString(Math.Round(firstNum / 3.6f, 4)); // м/с
+                        return Convert.ToString(Math.Round(firstNum * 0.01, 5)); //м 
                     case 2:
-                        return Convert.ToString(Math.Round(firstNum * 0.911, 4));// ф/с
+                        return Convert.ToString(Math.Round(firstNum * 0.00001, 5)); //км
                     case 3:
-                        return Convert.ToString(Math.Round(firstNum * 0.621, 4)); // миль/ч
+                        return Convert.ToString(Math.Round(firstNum * 0.000006, 5)); //мили
                     case 4:
-                        return Convert.ToString(Math.Round(firstNum * 0.54, 4));// узлов
+                        return Convert.ToString(Math.Round(firstNum * 0.0328, 5)); // футы
                 }
 
             }
@@ -177,15 +173,15 @@ namespace Calculator
                 switch (secondValue)
                 {
                     case 0:
-                        return Convert.ToString(Math.Round(firstNum * 3.6, 4));
+                        return Convert.ToString(Math.Round(firstNum * 100, 5));
                     case 1:
                         return Convert.ToString(firstNum);
                     case 2:
-                        return Convert.ToString(Math.Round(firstNum * 3.28, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.001, 5));
                     case 3:
-                        return Convert.ToString(Math.Round(firstNum * 2.23, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.00062, 5));
                     case 4:
-                        return Convert.ToString(Math.Round(firstNum * 1.94, 4));
+                        return Convert.ToString(Math.Round(firstNum * 3.28, 5));
 
                 }
 
@@ -195,15 +191,15 @@ namespace Calculator
                 switch (secondValue)
                 {
                     case 0:
-                        return Convert.ToString(Math.Round(firstNum * 1.09, 4));
+                        return Convert.ToString(Math.Round(firstNum * 100000, 4));
                     case 1:
-                        return Convert.ToString(Math.Round(firstNum * 0.3, 4));
+                        return Convert.ToString(Math.Round(firstNum * 1000, 4));
                     case 2:
                         return Convert.ToString(firstNum);
                     case 3:
-                        return Convert.ToString(Math.Round(firstNum * 0.68, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.62, 4));
                     case 4:
-                        return Convert.ToString(Math.Round(firstNum * 0.59, 4));
+                        return Convert.ToString(Math.Round(firstNum * 3280.84, 4));
 
                 }
             }
@@ -212,15 +208,15 @@ namespace Calculator
                 switch (secondValue)
                 {
                     case 0:
-                        return Convert.ToString(Math.Round(firstNum * 1.6, 4));
+                        return Convert.ToString(Math.Round(firstNum * 160934.4, 4));
                     case 1:
-                        return Convert.ToString(Math.Round(firstNum * 0.44, 4));
+                        return Convert.ToString(Math.Round(firstNum * 1609, 4));
                     case 2:
-                        return Convert.ToString(Math.Round(firstNum * 1.46, 4));
+                        return Convert.ToString(Math.Round(firstNum * 1.609, 4));
                     case 3:
                         return Convert.ToString(firstNum);
                     case 4:
-                        return Convert.ToString(Math.Round(firstNum * 0.87, 4));
+                        return Convert.ToString(Math.Round(firstNum * 5280, 4));
 
                 }
             }
@@ -229,13 +225,13 @@ namespace Calculator
                 switch (secondValue)
                 {
                     case 0:
-                        return Convert.ToString(Math.Round(firstNum * 1.85, 4));
+                        return Convert.ToString(Math.Round(firstNum * 30.48, 4));
                     case 1:
-                        return Convert.ToString(Math.Round(firstNum * 0.51, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.3048, 4));
                     case 2:
-                        return Convert.ToString(Math.Round(firstNum * 1.68, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.00031, 4));
                     case 3:
-                        return Convert.ToString(Math.Round(firstNum * 1.15, 4));
+                        return Convert.ToString(Math.Round(firstNum * 0.000189, 4));
                     case 4:
                         return Convert.ToString(firstNum);
 
@@ -251,10 +247,10 @@ namespace Calculator
             form1.Show();
             this.Hide();
         }
-        private void длиныToolStripMenuItem_Click(object sender, EventArgs e)
+        private void скоростьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form3 = new Form3();
-            form3.Show();
+            Form form2 = new Form2();
+            form2.Show();
             this.Hide();
         }
         private void углыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -262,6 +258,11 @@ namespace Calculator
             Form form4 = new Form4();
             form4.Show();
             this.Hide();
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -285,7 +286,6 @@ namespace Calculator
             {
                 growFontSize -= 4;
                 textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
-
             }
         }
     }
