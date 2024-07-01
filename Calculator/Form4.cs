@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,6 +140,29 @@ namespace Calculator
                 textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
             }
         }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            int growFontSize = commonFontSize, reduceFontSize = commonFontSize;
+            if (textBox2.Text.Length > 10)
+            {
+                growFontSize -= 4;
+                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+            }
+            else if (textBox2.Text.Length <= 10)
+            {
+                textBox2.Font = new Font("Consolas", reduceFontSize, FontStyle.Regular);
+            }
+            if (textBox2.Text.Length > 12)
+            {
+                growFontSize -= 4;
+                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+            }
+            if (textBox2.Text.Length > 17)
+            {
+                growFontSize -= 4;
+                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
+            }
+        }
 
         string convertValue()
         {
@@ -189,6 +214,7 @@ namespace Calculator
             return "";
         }
 
+        //Выбор режима
         private void скоростьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form form2 = new Form2();
@@ -222,28 +248,57 @@ namespace Calculator
             Application.Exit();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int growFontSize = commonFontSize, reduceFontSize = commonFontSize;
-            if (textBox2.Text.Length > 10)
-            {
-                growFontSize -= 4;
-                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
-            }
-            else if (textBox2.Text.Length <= 10)
-            {
-                textBox2.Font = new Font("Consolas", reduceFontSize, FontStyle.Regular);
-            }
-            if (textBox2.Text.Length > 12)
-            {
-                growFontSize -= 4;
-                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
-            }
-            if (textBox2.Text.Length > 17)
-            {
-                growFontSize -= 4;
-                textBox2.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
-            }
+            MessageBox.Show(
+                @"
+Версия программы: alpha
+Разработчик: Вердыш Дмитрий (Lama124)
+Примечание: Во всех кроме классического режима используется округление до 4 или 6 знаков после запятой.", "Информация", new MessageBoxButtons(), MessageBoxIcon.Information);
         }
+
+        private void сохранитьРезультатToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!textBox2.Text.Contains("="))
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Текстовый документ (*.txt)|*.txt|Все файлы (*.*)|*.*";
+                saveFileDialog.FileName = "Result";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName);
+                    streamWriter.WriteLine($"{textBox1.Text} {comboBox1.Text} = {textBox2.Text} {comboBox2.Text}");
+                    streamWriter.Close();
+                }
+            }
+            else
+                MessageBox.Show("Невозможно сохранить результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!textBox2.Text.Contains("="))
+            {
+                PrintDocument printDocument = new PrintDocument();
+                printDocument.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.Print();
+                }
+            }
+            else
+                MessageBox.Show("Невозможно напечатать результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка печати", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string result = $"{textBox1.Text} {comboBox1.Text} = {textBox2.Text} {comboBox2.Text}";
+            e.Graphics.DrawString(result, new Font("Consolas", 14), Brushes.Black, new Point(10, 10));
+        }
+
     }
 }

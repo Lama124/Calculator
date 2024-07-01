@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -217,7 +219,7 @@ namespace Calculator
                 growFontSize -= 4;
                 textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
             }
-            if(textBox1.Text.Length > 17)
+            if (textBox1.Text.Length > 17)
             {
                 growFontSize -= 4;
                 textBox1.Font = new Font("Consolas", growFontSize, FontStyle.Regular);
@@ -235,7 +237,7 @@ namespace Calculator
         private void длиныToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form form3 = new Form3();
-            form3.Show(); 
+            form3.Show();
             this.Hide();
         }
         private void углыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -251,12 +253,49 @@ namespace Calculator
                 @"
 Версия программы: alpha
 Разработчик: Вердыш Дмитрий (Lama124)
-Примечание: Во всех кроме классического режима используется округление до 4 или 6 знаков после запятой.", "Информация", new MessageBoxButtons(),MessageBoxIcon.Information);
+Примечание: Во всех кроме классического режима используется округление до 4 или 6 знаков после запятой.", "Информация", new MessageBoxButtons(), MessageBoxIcon.Information);
         }
 
         private void сохранитьРезультатToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if (textBox2.Text.Contains("="))
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Текстовый документ (*.txt)|*.txt|Все файлы (*.*)|*.*";
+                saveFileDialog.FileName = "Result";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName);
+                    streamWriter.WriteLine(textBox2.Text + textBox1.Text);
+                    streamWriter.Close();
+                }
+            }
+            else
+                MessageBox.Show("Невозможно сохранить результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Contains("="))
+            {
+                PrintDocument printDocument = new PrintDocument();
+                printDocument.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.Print();
+                }
+            }
+            else
+                MessageBox.Show("Невозможно напечатать результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка печати", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string result = textBox2.Text + textBox1.Text;
+            e.Graphics.DrawString(result, new Font("Consolas", 14), Brushes.Black, new Point(10, 10));
         }
     }
 }
