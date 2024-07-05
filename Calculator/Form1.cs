@@ -176,6 +176,16 @@ namespace Calculator
             }
         }
 
+        //Кнопка "%"
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "" && !textBox2.Text.Contains("="))
+            {
+                double firstNum = double.Parse(textBox2.Text.Remove(textBox2.Text.Length - 1));
+                double secondNum = double.Parse(textBox1.Text);
+                textBox1.Text = Convert.ToString(secondNum / 100 * firstNum);
+            }
+        }
         string FindResult()
         {
             if (textBox2.Text.Length > 0)
@@ -192,7 +202,7 @@ namespace Calculator
                         if (secondNum != 0)
                             return Convert.ToString(firstNum / secondNum);
                         else
-                        { isFirstInput = true; return "Деление на ноль невозможно"; }
+                        { isFirstInput = true; MessageBox.Show("Деление на ноль невозможно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error) ; return "Ошибка"; }
 
                 }
 
@@ -253,7 +263,12 @@ namespace Calculator
                 @"
 Версия программы: alpha
 Разработчик: Вердыш Дмитрий (Lama124)
-Примечание: Во всех кроме классического режима используется округление до 4 или 6 знаков после запятой.", "Информация", new MessageBoxButtons(), MessageBoxIcon.Information);
+Программа калькулятор предназначена для машинного вычисления математических примеров
+В программе присутствует ввод с клавиатуры кроме кнопки =
+Во вкладке Меню вы можете ознакомиться с другими режимами калькулятора,
+а так же сохранить или напечатать результат вычислений.
+В режимах перевода величин в другие системы измерения
+используется округление до 4-6 знаков после запятой", "Информация", new MessageBoxButtons(), MessageBoxIcon.Information);
         }
 
         private void сохранитьРезультатToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,7 +288,8 @@ namespace Calculator
             else
                 MessageBox.Show("Невозможно сохранить результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
+       
+        //Печать результата
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (textBox2.Text.Contains("="))
@@ -291,11 +307,11 @@ namespace Calculator
                 MessageBox.Show("Невозможно напечатать результат.\nПример не является полным\nнеобходимо нажать кнопку \"=\"", "Ошибка печати", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
-
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             string result = textBox2.Text + textBox1.Text;
             e.Graphics.DrawString(result, new Font("Consolas", 14), Brushes.Black, new Point(10, 10));
         }
+
     }
 }
